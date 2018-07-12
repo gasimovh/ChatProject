@@ -13,6 +13,7 @@ import java.util.List;
 public class ChannelController {
 
     private final ChannelRepository channelRepository;
+    private final MessageRepository messageRepository;
 
     @PostMapping("/channel")
     public String createChannel(@RequestParam(value="name") String name,
@@ -42,15 +43,14 @@ public class ChannelController {
     }
 
     @PostMapping("/channel/{name}/message")
-    public String saveMessage(@PathVariable(value="name") String name,
-                              @RequestParam(value="account_id") String accountId,
+    public String addMessage(@PathVariable(value="name") String name,
+                              @RequestParam(value="account_id") String account_id,
                               @RequestParam(value="content") String content){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime dateOfCreation = LocalDateTime.now();
-        Message message = new Message(accountId,dtf.format(dateOfCreation), content, channelRepository.findByName(name));
-        Channel c = channelRepository.findByName(name);
-        c.addMessage(message);
-        channelRepository.flush();
+        Message message = new Message(account_id, dtf.format(dateOfCreation), content, channelRepository.findByName(name));
+        channelRepository.findByName(name).addMessage(message);
+        messageRepository.save(message);
         return "Message saved!";
     }
 

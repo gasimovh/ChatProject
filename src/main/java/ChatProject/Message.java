@@ -24,7 +24,7 @@ public class Message {
     private String content;
 
     @NotNull
-    private String acountId;;
+    private String accountId;;
 
     @JsonIgnore
     @NotNull
@@ -34,8 +34,8 @@ public class Message {
 
     public Message(){};
 
-    public Message(String acountId, String dateOfCreation, String content, Channel parent){
-        this.acountId = acountId;
+    public Message(String accountId, String dateOfCreation, String content, Channel parent){
+        this.accountId = accountId;
         this.dateOfCreation = dateOfCreation;
         this.content = content;
         this.parent = parent;

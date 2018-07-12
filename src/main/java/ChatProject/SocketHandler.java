@@ -28,7 +28,7 @@ public class SocketHandler extends TextWebSocketHandler {
 
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
         Message m = new Message();
-        m.setAcountId(value.get("account_id"));
+        m.setAccountId(value.get("account_id"));
         m.setContent(value.get("content"));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime dateOfCreation = LocalDateTime.now();
