@@ -11,7 +11,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-	ws = new WebSocket('ws:'+ window.location.href.slice(5) + '/c');
+	ws = new WebSocket('ws:'+ window.location.href.slice(5) + '/chat');
 	//ws = new WebSocket('ws://localhost:8080/channel');
 	ws.onmessage = function(data){
 		showGreeting(data.data);

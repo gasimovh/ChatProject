@@ -60,5 +60,4 @@ public class ChannelController {
         channelRepository.flush();
         return "Channel status changed to " + status + "!";
     }
-
 }

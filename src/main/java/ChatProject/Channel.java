@@ -31,7 +31,7 @@ public class Channel {
 
     private String dateOfClosing;
 
-    @OneToMany(mappedBy="parent")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="parent", cascade = CascadeType.ALL)
     private List<Message> listOfMessages;
 
     public Channel(){};

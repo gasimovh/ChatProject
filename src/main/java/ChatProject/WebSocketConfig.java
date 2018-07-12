@@ -12,8 +12,9 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
 
     private final ChannelRepository cr;
+    private final MessageRepository mr;
 
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new SocketHandler(cr), "/c");
+        registry.addHandler(new SocketHandler(cr, mr), "/chat");
     }
 }
