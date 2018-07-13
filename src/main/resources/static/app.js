@@ -11,8 +11,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-	ws = new WebSocket('ws:'+ window.location.href.slice(5) + '/chat');
-	//ws = new WebSocket('ws://localhost:8080/channel');
+	ws = new WebSocket('ws:'+ window.location.href.slice(5) + '/chat/' + $("#channel").val());
 	ws.onmessage = function(data){
 		showGreeting(data.data);
 	}
@@ -20,15 +19,15 @@ function connect() {
 }
 
 function disconnect() {
-    if (ws != null) {
+    /*if (ws != null) {
         ws.close();
-    }
+    }*/
     setConnected(false);
     console.log("Disconnected");
 }
 
 function sendName() {
-    ws.send($("#name").val());
+    ws.send($("#message").val());
 }
 
 function showGreeting(message) {
